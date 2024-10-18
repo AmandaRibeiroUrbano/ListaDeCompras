@@ -1,38 +1,341 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --primary-color: #c1121f;
+  --secondary-color: #780000;
+  --neutral-color: #fdf0d5;
+  --accent-color: #16425b;
+  --title-font: "Krona One", sans-serif;
+  --text-font: 'Numans', sans-serif;
+  --gradient-bg: linear-gradient(180deg, #669bbc 0%, #003049 100%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  background: var(--gradient-bg);
+  background-repeat: no-repeat;
+  background-color: #003049;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 1rem;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  background-color: var(--neutral-color);
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 27.5rem;
+  padding: 3.5rem;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+h2 {
+  font-family: var(--title-font);
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 2rem;
+}
+
+.modal-title {
+  text-align: center;
+}
+
+hr {
+  border: none;
+  border-bottom: 0.1875rem dotted var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+p {
+  font-family: var(--text-font);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  text-align: left;
+}
+
+.modal-text {
+  font-size: 1rem;
+}
+
+.error-message {
+  color: red;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.alert-icon {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid red;
+  position: relative;
+  margin-right: 0.5rem;
+}
+
+.alert-icon::after {
+  content: "!";
   color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 1px;
+  left: -2.3px;
 }
 
-.App-link {
-  color: #61dafb;
+.bought {
+  text-decoration: line-through;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+input {
+  background-color: #e6e0d6;
+  margin-bottom: .4rem;
+}
+
+.input-item {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: 1.5rem;
+  border: 0.0625rem solid var(--accent-color);
+  width: 19.1875rem;
+  font-family: var(--text-font);
+}
+
+.input-item::placeholder {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  line-height: 1.1875rem;
+}
+
+.button-item {
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  border-radius: 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--neutral-color);
+  font-family: var(--text-font);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  border: none;
+}
+
+.modal-button-container{
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-modal {
+  cursor: pointer;
+  padding: .5rem 1.75rem;
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  color: var(--neutral-color);
+  font-family: var(--text-font);
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  border: none;
+}
+
+.outline {
+  background-color: #fafafa;
+  color: var(--primary-color);
+  border: 1px solid;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.container-item-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-item-list div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.input-checkbox {
+  display: none;
+}
+
+.custom-checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: var(--neutral-color);
+  border: 0.0625rem solid var(--accent-color);
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+.checked {
+  background-color: var(--accent-color);
+  position: relative;
+}
+
+.custom-checkbox.checked::after {
+  content: "";
+  position: absolute;
+  left: 30%;
+  top: -10%;
+  width: 0.3125rem;
+  height: 0.875rem;
+  border-top: 0.125rem solid var(--neutral-color);
+  border-left: 0.125rem solid var(--neutral-color);
+  transform: rotate(-140deg);
+}
+
+.data-text {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+
+.item-list-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.container-list {
+  width: 100%;
+}
+
+#bag {
+  width: 65%;
+  transition: transform 0.2s ease-in-out;
+}
+
+#bag-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#bag:hover {
+  animation: swing 0.5s infinite alternate;
+}
+
+@keyframes swing {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+
+#checkmark {
+  content: "✔";
+  cursor: default;
+  font-size: 1.5rem;
+  color: var(--neutral-color);
+  position: absolute;
+  top: 80%;
+  right: 25%;
+  background-color: green;
+  border-radius: 50%;
+  padding: 20px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+#checkmark:hover {
+  transform: scale(1.2);
+}
+
+
+@media (max-width: 768px) {
+  body {
+    font-size: 0.875rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  main {
+    width: 100%;
+    padding: 2rem;
   }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .input-item {
+    width: 100%;
+    font-size: 0.875rem;
+    padding: 0.625rem 0.875rem;
+  }
+
+  .button-item {
+    font-size: 1rem;
+    padding: 0.625rem 0.875rem;
+  }
+
+  #bag {
+    width: 50%;
+  }
+
+  #checkmark {
+    font-size: 2rem;
+    padding: 6%;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .custom-checkbox {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .container-item-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .container-item-list div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .alert-icon::after {
+    top: 2px;
+  }
+
 }
